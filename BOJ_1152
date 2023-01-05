@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    
+  Scanner sc = new Scanner(System.in);
+    
+  String sen = sc.nextLine();  
+
+  if(sen.equals(" ")){  
+   System.out.println(0);
+   }
+  
+  else {  
+   String arr[] = sen.split(" ");
+  
+   if(arr[0] == "" && arr[1] != "") {
+    System.out.println(arr.length - 1);
+   } 
+   else {
+    System.out.println(arr.length); 
+   }    
+  }
+    
+ }
+}

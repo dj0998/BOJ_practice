@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+   Scanner sc = new Scanner(System.in);
+
+    int f_off = sc.nextInt();
+    int f_on = sc.nextInt();
+    int s_off = sc.nextInt();
+    int s_on = sc.nextInt();
+    int t_off = sc.nextInt();
+    int t_on = sc.nextInt();
+    int fo_off = sc.nextInt();
+    int fo_on = sc.nextInt();
+
+    int max_1 = Math.max(f_on, (f_on + s_on - s_off));
+    int max_2 = Math.max(f_on + s_on - s_off, (f_on + s_on - s_off + t_on - t_off));
+    int max_3 = Math.max(f_on + s_on - s_off + t_on - t_off, (f_on + s_on - s_off + t_on - t_off - fo_off));
+
+    System.out.println(Math.max(Math.max(max_1, max_2), max_3));
+
+  } 
+}

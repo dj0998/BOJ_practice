@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+   Scanner sc = new Scanner(System.in);
+
+   int r = sc.nextInt();
+   double a = r * r * Math.PI;
+   double b = 2 * r * r; 
+
+   System.out.println(a);
+   System.out.println(b); 
+    
+  } 
+}

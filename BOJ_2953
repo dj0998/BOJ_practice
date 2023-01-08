@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+   Scanner sc = new Scanner(System.in);
+    
+    int num = 0;
+    int max = -1;
+    int[] arr = new int[5];
+
+    for(int i = 0; i < 5; i++) {
+      int sum = 0;
+      for(int j = 0; j < 4; j++) {
+        int score = sc.nextInt();
+        sum += score;
+      }
+      arr[i] = sum;
+      if(max < sum) {
+        max = sum; num = i+1;
+      }
+    }
+    System.out.println(num+" "+max);
+  } 
+}

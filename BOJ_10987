@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+   Scanner sc = new Scanner(System.in);
+
+    String arr = sc.nextLine();
+    int count = 0;
+
+    for(int i = 0; i < arr.length(); i++) {
+      if(arr.charAt(i) == 'a') count++;
+      else if(arr.charAt(i) == 'e') count++;
+      else if(arr.charAt(i) == 'i') count++;
+      else if(arr.charAt(i) == 'o') count++;
+      else if(arr.charAt(i) == 'u') count++;
+		}
+    System.out.println(count);
+  } 
+}

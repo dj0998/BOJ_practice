@@ -1,0 +1,59 @@
+import java.util.Scanner;
+ 
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String[] color = {"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"};
+    
+    long num_a = 0;
+    long num_b = 0;
+    String a  =  sc.next();
+    String b = sc.next();
+    String mul = sc.next();
+
+    for(int i = 0; i < color.length; i++) {
+      if(color[i].equals(a)) {
+        num_a = i;
+      }
+      if(color[i].equals(b)) {
+        num_b = i;
+      }
+    }
+    long sum = 10 * num_a + num_b;
+  
+    switch(mul) {
+      case "black":
+        System.out.println(sum * 1);
+        break;
+      case "brown":
+        System.out.println(sum * 10);
+        break;
+      case "red":
+        System.out.println(sum * 100);
+        break;
+      case "orange":
+        System.out.println(sum * 1000);
+        break;
+      case "yellow":
+        System.out.println(sum * 10000);
+        break;
+      case "green":
+        System.out.println(sum * 100000);
+        break;
+      case "blue":
+        System.out.println(sum * 1000000);
+        break;
+      case "violet":
+        System.out.println(sum * 10000000);
+        break;
+      case "grey":
+        System.out.println(sum * 100000000);
+        break;
+       case "white":
+        System.out.println(sum * 1000000000);
+        break;   
+    }
+    
+  } 
+}

@@ -1,0 +1,21 @@
+import java.util.Scanner;
+ 
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int result = 0;
+    long num = sc.nextLong();
+    int f = sc.nextInt();
+    num = num / 100;
+    num = num * 100;
+
+    for(int i = 0; i < 100; i++) {
+      if((num + i) % f == 0) {
+        result = i;
+        break;
+      }
+    }
+    if(result < 10) System.out.println("0"+result);
+    else System.out.println(result);
+  } 
+}

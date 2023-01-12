@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int sum = 0;
+    int result = 0 ; 
+    int freq = -1;
+    int check[] = new int[1000];
+
+  
+    for(int i = 0; i < 10; i++) {
+      int n = sc.nextInt();
+      sum += n;
+      check[n-1]++;
+    }
+
+    for(int i = 0; i < check.length; i++) {
+      if(freq < check[i]) {
+        freq = check[i];
+        result = i;
+      }
+    }
+    System.out.println(sum/10);
+    System.out.println(result+1);
+  }  
+}

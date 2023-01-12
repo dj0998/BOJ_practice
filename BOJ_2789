@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String str = sc.next();
+
+    str = str.replace("C", "");
+    str = str.replace("A", "");
+    str = str.replace("M", "");
+    str = str.replace("B", "");
+    str = str.replace("R", "");
+    str = str.replace("I", "");
+    str = str.replace("D", "");
+    str = str.replace("G", "");
+    str = str.replace("E", "");
+    
+    System.out.println(str);
+  }  
+}

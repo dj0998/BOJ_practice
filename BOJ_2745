@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    String arr = sc.next();
+    int num = sc.nextInt();
+    int sum = 0;
+    int str = 0;
+
+    for(int i = 0; i < arr.length(); i++) {
+      if(arr.charAt(i) >= 65 && arr.charAt(i) <=90) str = arr.charAt(i)-55;
+      else str = arr.charAt(i)-'0';                                         
+      sum += str * Math.pow(num, arr.length() - i - 1);                     
+    }
+  
+    System.out.println(sum);
+  }  
+}

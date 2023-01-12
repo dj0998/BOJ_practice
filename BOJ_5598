@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String voca = sc.nextLine();
+    
+    for(int i = 0; i < voca.length(); i++) {
+      char n = voca.charAt(i);
+      if(n == 'A' ||n == 'B'||n == 'C') n += 23;
+      else n -= 3;
+      System.out.print(n);
+    }
+    
+  }  
+}

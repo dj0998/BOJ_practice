@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+  public static int cycle(int num) {
+    int sum = num / 10 + num % 10;
+    num = (num % 10 * 10) + (sum % 10);  
+    return num;
+  }
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    int count = 1;
+    int n = sc.nextInt();
+    int a = n;
+    
+    while(a != cycle(n)) {
+      n = cycle(n);
+      count++;
+    }
+    
+    System.out.println(count);
+  }  
+}

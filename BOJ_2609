@@ -1,0 +1,18 @@
+import java.util.Scanner;
+import java.math.BigInteger;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    BigInteger a1 = BigInteger.valueOf(a);           //BigInteger타입으로 변환
+    BigInteger b1 = BigInteger.valueOf(b);
+    int g = a1.gcd(b1).intValue();                  //int 형으로 변환시켜준다
+    int l = a * b / g;
+
+    System.out.println(g);
+    System.out.println(l);
+  }
+}

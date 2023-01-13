@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int numerator = 0;          //분자
+    int denominator = 0;        //분모
+    int check = 0;
+    int n = 0;
+    int x = sc.nextInt();
+
+    while(check < x) {
+      n++;
+      check = n*(n+1)/2;         //a=1, d=1 인 등차수열의 합 = n*(n+1)/2;
+    }
+
+    int gap = x - ((n-1)*n/2);
+    
+    if(n % 2 == 1) {
+      numerator = n - gap +1;
+      denominator = gap; 
+    }
+
+    else if(n % 2 == 0) {
+      numerator = gap;
+      denominator = n - gap +1;
+    }
+    
+    System.out.println(numerator+"/"+denominator);
+  }  
+}

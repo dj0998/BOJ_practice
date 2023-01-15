@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String x = sc.next();
+    String y = sc.next();
+    StringBuilder sb1 = new StringBuilder(x);
+    String rev_x = sb1.reverse().toString();
+    StringBuilder sb2 = new StringBuilder(y);
+    String rev_y = sb2.reverse().toString();
+
+    int sum = Integer.valueOf(rev_x) + Integer.valueOf(rev_y);
+    String sum_s = String.valueOf(sum);
+
+    StringBuilder sum_rev = new StringBuilder(sum_s);
+    String result = sum_rev.reverse().toString();
+    
+    int result_i = Integer.valueOf(result);
+
+    System.out.println(result_i);
+  }
+}

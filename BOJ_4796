@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int count = 0;
+
+    while(true) {
+      int L = sc.nextInt();
+      int P = sc.nextInt();    //P일중 L일만 사용가능
+      int V = sc.nextInt();   //총 휴가기간
+
+      if(L == 0 && P == 0 && V == 0) break;
+      else count++;
+
+      int n = V / P;
+      int r = V - n * P;
+      int result = n * L + Math.min(r, L);
+      System.out.println("Case "+count+": "+result);
+    }
+    
+  }
+}

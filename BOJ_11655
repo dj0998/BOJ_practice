@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    String str = sc.nextLine();
+
+    for(int i = 0; i < str.length(); i++) {
+      char n = str.charAt(i);
+      if(n >= 65 && n <= 77) n += 13;
+      else if(n >=78 && n <= 90) n -= 13;
+      else if(n >=97 && n <= 109) n += 13;
+      else if(n >=110 && n <= 122) n -= 13;
+      System.out.print(n);
+    }
+  }
+}

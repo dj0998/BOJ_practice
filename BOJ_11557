@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int t = sc.nextInt();
+
+    for(int i = 0; i < t; i++) {
+      int n = sc.nextInt();
+      int max = -1;
+      int check = 0;
+      String[] uni = new String[n];
+      int[] drink = new int[n];
+      
+      for(int j = 0; j < n; j++) {
+        uni[j] = sc.next();
+        drink[j] = sc.nextInt();
+      }
+
+      for(int j = 0; j < n; j++) {
+        if(max < drink[j]) {
+          max = drink[j];
+          check = j;
+        }
+      }
+      System.out.println(uni[check]);
+    }
+
+  }
+}

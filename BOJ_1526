@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+
+    for(int i = n; i >= 4; i--) {
+      int check = 0;
+			int result = i;
+			while(result > 0) {
+				if(result % 10 == 4 || result % 10 == 7) result /= 10;
+				else {
+					check = 1;
+					break;
+				}
+			}			
+			if(check == 0) {
+				System.out.println(i);
+				break;
+			}
+      
+		}
+
+  }
+}

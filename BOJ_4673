@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int[] arr = new int[10001];
+    
+    for(int i = 1; i <= 10000; i++) {
+      int n = d(i);
+      if(n <= 10000) arr[n]++;
+    }
+
+    for(int i = 1; i <= 10000; i++) {
+      if(arr[i] == 0) System.out.println(i);
+    }
+
+  }
+
+  public static int d(int num) {
+    int result = num;
+    while(num > 0) {
+      result += num%10;
+      num /= 10;
+    }
+    return result;
+  }
+  
+}

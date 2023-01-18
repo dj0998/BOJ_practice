@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int count_h = 0;
+    int count_s = 0;
+    String str= sc.nextLine();
+    String[] arr = str.split("");
+
+    for(int i = 0; i < arr.length-2; i++) {
+      if(arr[i].equals(":") && arr[i+1].equals("-") && arr[i+2].equals(")")) count_h++;
+      else if(arr[i].equals(":") && arr[i+1].equals("-") && arr[i+2].equals("(")) count_s++;
+    }
+
+    if(count_h == 0 && count_s == 0) System.out.println("none");
+    else if(count_h == count_s) System.out.println("unsure");
+    else if(count_h > count_s) System.out.println("happy");
+    else if(count_h < count_s) System.out.println("sad");
+
+  }
+}

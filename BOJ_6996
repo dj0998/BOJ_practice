@@ -1,0 +1,23 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int t = sc.nextInt();
+
+
+    for(int i = 0; i < t; i++) {
+      String a = sc.next();
+      String b = sc.next();
+      char[] A = a.toCharArray();
+      char[] B = b.toCharArray();
+      Arrays.sort(A);
+      Arrays.sort(B);
+      if(Arrays.equals(A, B)) System.out.println(a+" & "+b+" are anagrams.");
+      else System.out.println(a+" & "+b+" are NOT anagrams.");
+    }
+    
+  }
+}

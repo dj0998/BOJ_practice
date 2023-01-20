@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Queue<Integer> q = new LinkedList<>();
+    StringBuilder sb = new StringBuilder();
+
+    int n = sc.nextInt();
+    int k = sc.nextInt();
+    sb.append("<");
+
+    for(int i = 1; i <= n; i++) q.offer(i);          //1부터 n까지 추가
+
+    while(q.size() > 1) {                            //1개가 남을때까지
+      for(int i = 1; i < k ; i++) {
+        int num = q.poll();                          //k-1번 뒤로 보내기
+        q.offer(num);
+      }
+      sb.append(q.poll()).append(", ");             //k번째 수를 뽑아내서 저장
+    }
+    
+    sb.append(q.poll()).append(">");                // 마지막 남은 1개 저장
+    System.out.println(sb);
+  }
+}

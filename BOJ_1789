@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    long s = sc.nextLong();
+    long n = 0;
+    long sum = 0;
+
+    while(sum < s) {
+      n++;
+      sum += n;
+    }
+    
+    if(sum == s) System.out.println(n);
+    else System.out.println(n-1);
+    
+  }
+}

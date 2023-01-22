@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    int row = 0;
+    int col = 0;
+    int n = sc.nextInt();
+    char[][] arr = new char[n+1][n+1];
+
+    for(int i = 0; i < n; i++) {
+      String str = sc.next();
+      for(int j = 0; j < n; j++) {
+        arr[i][j] = str.charAt(j);
+      }
+      arr[i][n] = arr[n][i] = 'X';   // 가장자리의 벽도 짐으로 판단
+    }
+
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < n-1; j++) {
+        if(arr[i][j] == '.' && arr[i][j+1] == '.' && arr[i][j+2] == 'X') {
+          row++;
+        }
+        if(arr[j][i] == '.' && arr[j+1][i] == '.' && arr[j+2][i] == 'X') {
+          col++;
+        }
+      }
+    }
+    
+   System.out.println(row+" "+col);
+  }
+}

@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int max = 0;
+    int min = 0;
+    int n = sc.nextInt();
+    String[][] arr = new String[n][4];
+
+    for(int i = 0; i < n; i++) {;
+      arr[i][0] = sc.next();
+      arr[i][1] = sc.next();
+      arr[i][2] = sc.next();
+      arr[i][3] = sc.next();
+    }
+
+    for(int i = 0; i < n; i++) {
+      if(Integer.parseInt(arr[i][3]) > Integer.parseInt(arr[min][3])) min = i;
+      else if(Integer.parseInt(arr[i][3]) == Integer.parseInt(arr[min][3]) && Integer.parseInt(arr[i][2]) > Integer.parseInt(arr[min][2])) min = i;
+      else if(Integer.parseInt(arr[i][3]) == Integer.parseInt(arr[min][3]) && Integer.parseInt(arr[i][2]) == Integer.parseInt(arr[min][2])
+              && Integer.parseInt(arr[i][1]) > Integer.parseInt(arr[min][1])) min = i;
+    }
+
+    for(int i = 0; i < n; i++) {
+      if(Integer.parseInt(arr[i][3]) < Integer.parseInt(arr[max][3])) max = i;
+      else if(Integer.parseInt(arr[i][3]) == Integer.parseInt(arr[max][3]) && Integer.parseInt(arr[i][2]) < Integer.parseInt(arr[max][2])) max = i;
+      else if(Integer.parseInt(arr[i][3]) == Integer.parseInt(arr[max][3]) && Integer.parseInt(arr[i][2]) == Integer.parseInt(arr[max][2])
+              && Integer.parseInt(arr[i][1]) < Integer.parseInt(arr[max][1])) max = i;
+    }
+
+    System.out.println(arr[min][0]);
+    System.out.println(arr[max][0]);
+  }
+}

@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    ArrayList<Integer> width = new ArrayList<>();
+    ArrayList<Integer> heigh = new ArrayList<>();
+    width.add(0);
+    heigh.add(0);
+
+    int max_w = -1;
+    int max_h = -1;
+    int w = sc.nextInt();
+    int h = sc.nextInt();
+    int n = sc.nextInt();
+    
+    for(int i = 0; i < n; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      if(a == 1) width.add(b);
+      else heigh.add(b);
+    }
+    width.add(w);
+    heigh.add(h);
+
+    Collections.sort(width);
+    Collections.sort(heigh);
+
+    for(int i = 0; i < width.size()-1; i++) {
+      if(max_w < (width.get(i+1)-width.get(i))) max_w = width.get(i+1) - width.get(i);
+    }
+
+    for(int i = 0; i < heigh.size()-1; i++) {
+      if(max_h < (heigh.get(i+1)-heigh.get(i))) max_h = heigh.get(i+1) - heigh.get(i);
+    }
+
+    System.out.println(max_w * max_h);
+  }
+}

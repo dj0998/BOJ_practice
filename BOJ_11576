@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    ArrayList<Integer> list = new ArrayList<>();
+
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    int m = sc.nextInt();
+    int dec = 0;
+    
+    for(int i = m; i > 0; i--) {
+      int num = sc.nextInt();
+      dec += num * Math.pow(a, i-1);
+    }
+
+    while(dec != 0) {
+      list.add(dec % b);
+      dec /= b;
+    }
+    
+    Collections.reverse(list);
+
+    for(int i = 0; i < list.size(); i++) System.out.print(list.get(i)+" ");
+  }
+}

@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    int[] arr = new int[3];
+    int count = 0;
+
+    if(n == 1000) count = 144;
+    else if(n < 100) count = n;
+    else if(n <= 999) {
+      count = 99;
+      for(int i = 100; i <= n; i++) {
+        arr[0] = i % 10;
+        arr[1] = (i / 10) % 10;
+        arr[2] = i / 100;
+        if((arr[2] - arr[1]) == (arr[1] - arr[0])) count++;
+      }
+    }
+    
+    System.out.println(count);
+  }
+}

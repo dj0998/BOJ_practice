@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Stack<Integer> stack = new Stack<>();
+    StringBuilder sb = new StringBuilder();
+
+    int n = sc.nextInt();
+    
+    for(int i = 0; i < n; i++) {
+      String str = sc.next();
+
+      if(str.equals("push")) stack.push(sc.nextInt());
+      else if(str.equals("pop")) {
+        if(stack.empty()) sb.append(-1+"\n");
+        else sb.append(stack.pop()+"\n");
+      }
+      else if(str.equals("size")) sb.append(stack.size()+"\n");
+      else if(str.equals("empty")) {
+        if(stack.empty()) sb.append(1+"\n");
+        else sb.append(0+"\n");
+      }
+      else if(str.equals("top")) {
+        if(stack.empty()) sb.append(-1+"\n");
+        else sb.append(stack.peek()+"\n");
+      }
+      
+    }
+
+    System.out.println(sb);
+  }
+}

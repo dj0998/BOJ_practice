@@ -1,0 +1,19 @@
+import java.util.Scanner;
+import java.math.BigInteger;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+
+    for(int i = 0; i < n; i++) {
+      BigInteger a = sc.nextBigInteger();
+      BigInteger b = sc.nextBigInteger();
+      BigInteger gcd = a.gcd(b);                    //최대공약수
+      BigInteger lcm = a.multiply(b).divide(gcd);   //최소공배수
+      System.out.println(lcm);
+    }
+    
+  }
+}

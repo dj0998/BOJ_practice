@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String x = sc.nextLine();
+    int count = 0;
+    
+    while(true) {
+      long sum = 0;
+      if(x.length() == 1) break;
+      else {
+        for(int i = 0; i < x.length(); i++) {
+          sum += Integer.parseInt(String.valueOf(x.charAt(i)));
+        }
+        count++;
+        x = Long.toString(sum);
+      }
+    }
+
+    if(Integer.parseInt(x) % 3 == 0) System.out.println(count+"\n"+"YES");
+    else System.out.println(count+"\n"+"NO");
+  }
+}

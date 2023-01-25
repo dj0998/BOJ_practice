@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+    int n = sc.nextInt();
+    
+    for(int i = 0; i < n; i++) {
+      int a = sc.nextInt();
+      if(map.containsKey(a)) map.put(a, map.get(a) + 1);
+      else map.put(a, 1);
+    }
+
+    int m = sc.nextInt();
+
+    for(int i = 0; i < m; i++) {
+      int b = sc.nextInt();
+      if(map.containsKey(b)) sb.append(map.get(b)+" ");
+      else sb.append(0+" ");
+    }
+
+    System.out.println(sb);
+  }
+}

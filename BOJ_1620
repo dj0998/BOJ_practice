@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    HashMap<String, Integer> name = new HashMap<>();
+    HashMap<Integer, String> num = new HashMap<>();
+    
+
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+
+    for(int i = 1; i <= n; i++) {
+      String str = sc.next();
+      name.put(str, i);
+      num.put(i, str);
+    }
+
+    for(int i = 0; i < m; i++) {
+      String str = sc.next();
+      if(Character.isDigit(str.charAt(0))) sb.append(num.get(Integer.parseInt(str))+"\n");
+      else sb.append(name.get(str)+"\n");
+    }
+
+    System.out.println(sb);
+  }
+}

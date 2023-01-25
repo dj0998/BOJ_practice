@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static char arr[][];
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    int min = 64;
+    
+    arr = new char[n][m];
+    
+    for(int i = 0; i < n; i++) {
+      String str = sc.next();
+      for(int j = 0; j < m; j++) {
+        arr[i][j] = str.charAt(j);
+      }
+    }
+
+    for(int i = 0; i < n - 7; i++) {
+      for(int j = 0; j < m - 7; j++) {
+        min = Math.min(min, check(i, j));
+      }
+    }
+
+   System.out.println(min);
+  }
+
+  public static int check(int x, int y) {
+    int count = 0;
+    for(int i = x; i < x + 8; i++) {
+      for(int j = y; j < y + 8; j++) {
+        if((i + j) % 2 == 0) {              //W보드일때 인덱스 합이 짝수이면 W이다
+          if(arr[i][j] == 'B') count++;     //B인경우에는 W로 바꿔주어야 하므로 count++
+        }
+
+        else if((i + j) % 2 == 1) {          //W보드일때 인덱스 합이 홀수이면 B이다
+          if(arr[i][j] == 'W') count++;      //W인경우에는 B로 바꿔주어야 하므로 count++
+        }
+      }
+    }
+    count = Math.min(count, 64-count);
+    return(count);
+  }
+
+}

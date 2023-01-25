@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    HashMap<String, Integer> map = new HashMap<>();
+    StringBuilder sb = new StringBuilder();
+    ArrayList<String> list = new ArrayList<>();
+    
+    int count = 0;
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    
+    for(int i = 0; i < n; i++) {
+      map.put(sc.next(), 1);
+    }
+
+     for(int i = 0; i < m; i++) {
+       String str = sc.next();
+       if(map.containsKey(str)) list.add(str);
+    }
+
+    Collections.sort(list);
+
+    sb.append(list.size()+"\n");
+
+    for(int i = 0; i < list.size(); i++) {
+       sb.append(list.get(i)+"\n");
+    }
+
+    System.out.println(sb);
+  }
+}

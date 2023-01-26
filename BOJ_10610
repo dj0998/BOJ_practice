@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    String str = sc.nextLine();
+    int n = str.length();
+    int[] check = new int[n];
+    int sum = 0;
+    
+    for(int i = 0; i < n; i++) {
+      check[i] = str.charAt(i) - '0';
+      sum += str.charAt(i) - '0';
+    }
+
+    Arrays.sort(check);
+
+    if(check[0] == 0 && sum % 3 == 0) {
+      for(int i = n - 1; i >= 0; i--) sb.append(check[i]);
+    }
+    else sb.append(-1);
+
+    System.out.print(sb);
+  }
+}

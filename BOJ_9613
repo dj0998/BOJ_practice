@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int t = sc.nextInt();
+  
+    for(int i = 0; i < t; i++) {
+      long sum = 0;
+      int n = sc.nextInt();
+      int[] arr = new int[n];
+      
+      for(int j = 0; j < n; j++) {
+        arr[j] = sc.nextInt();
+      }
+
+      for(int j = 0; j < n - 1 ; j++) {
+        for(int k = j + 1; k < n; k++) {
+          sum += gcd(arr[j], arr[k]);
+        }
+      }
+      
+      sb.append(sum+"\n");
+    }
+    
+    System.out.println(sb);
+  }
+
+  public static int gcd(int a, int b) {
+    if(a % b == 0) return b;
+    else return gcd(b, a % b);
+  }
+}

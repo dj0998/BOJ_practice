@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    int single = 1000;
+    int set = 1000;
+    
+
+    for(int i = 0; i < m; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      set = Math.min(a, set);
+      single = Math.min(b, single);
+    }
+
+    int num = n / 6;
+    if(n % 6 != 0) num++;
+    int result = Math.min(num * set, n * single);
+    result = Math.min(result, (set * (n / 6)) + (single * (n % 6)));
+    
+    System.out.println(result);
+  }
+}

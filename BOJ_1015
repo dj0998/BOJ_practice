@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int n = sc.nextInt();
+    int[][] a = new int[n][2];
+    int[] b = new int[n];
+
+    for(int i = 0; i < n; i++) {
+      a[i][0] = i;
+      a[i][1] = sc.nextInt();
+    }
+
+    Arrays.sort(a, new Comparator<int[]>() {
+      public int compare(int[] i1, int[] i2) {
+        return i1[1] - i2[1];
+      }
+    });
+
+    for(int i = 0; i < n; i++) {
+      b[a[i][0]] = i;
+    }
+
+    for (int j = 0; j < b.length; j++) sb.append(b[j] + " ");
+
+    System.out.println(sb);
+  }
+}

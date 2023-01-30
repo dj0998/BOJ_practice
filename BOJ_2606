@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+  
+  static boolean[][] arr;
+  static boolean[] visit;
+  static int count;
+  static int n;
+  static int m;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    n = sc.nextInt();
+    m = sc.nextInt();
+    count = 0;
+
+    arr = new boolean[n+1][n+1];
+    visit = new boolean[n+1];
+
+    for(int i = 1; i <= m; i++) {
+      int x = sc.nextInt();
+      int y = sc.nextInt();
+      arr[x][y] = arr[y][x] = true;
+    }
+
+    dfs(1);
+
+    
+    System.out.println(count);
+  }
+
+  public static void dfs(int num) {
+    visit[num] = true;
+    for(int i = 1; i <= n; i++) {
+      if(!visit[i] && arr[num][i] == true) {
+        count++;
+        dfs(i);
+      }
+    }
+  }
+
+}

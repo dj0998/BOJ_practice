@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    int n = Integer.parseInt(br.readLine());
+    int[] arr = new int[n];
+    int min = Integer.MAX_VALUE;
+    int l = 0;
+    int r = n - 1;
+    int num1 = 0;
+    int num2 = 0; 
+
+    StringTokenizer st = new StringTokenizer(br.readLine());
+
+    for(int i = 0; i < n; i++) {
+      arr[i] = Integer.parseInt(st.nextToken());
+    }
+
+    Arrays.sort(arr);
+
+    while(l < r) {
+      int diff = Math.abs(arr[l] + arr[r]);
+      
+      if(diff < min) {
+        min = diff;
+        num1 = arr[l];
+        num2 = arr[r];
+      }
+        
+      else if(arr[l] + arr[r] > 0) r--;
+      else if(arr[l] + arr[r] <= 0) l++;
+    }
+
+    System.out.println(num1+" "+num2);
+  }
+}

@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+
+    int[] stair = new int[n+1];
+    int[] score = new int[n+1];
+  
+    for(int i = 1; i <= n; i++) {
+      stair[i] = sc.nextInt();
+    }
+
+    score[0] = 0;
+    score[1] = stair[1];
+
+    if(n > 1) score[2] = stair[1] + stair[2];
+
+    for(int i = 3; i <= n; i++) {
+      score[i] = Math.max(stair[i - 1] + score[i - 3], score[i - 2]) + stair[i];
+    }
+    
+    System.out.println(score[n]);
+  }
+}

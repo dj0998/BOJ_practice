@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Collections;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int t = sc.nextInt();
+    
+    for(int i = 0; i < t; i++) {
+      Deque<Integer> q = new LinkedList<>();
+      Deque<Integer> index = new LinkedList<>();
+      int n = sc.nextInt();
+      int m = sc.nextInt();
+      int count = 0;
+
+      for(int j = 0; j < n; j++) {
+        q.add(sc.nextInt());
+        index.add(j);
+      }
+
+      while(true) {
+        int max = Collections.max(q);
+
+        if(q.peek() == max) {
+          count++;
+          q.poll();
+          if(index.poll() == m) {
+            sb.append(count+"\n");
+            break;
+          }
+        }
+
+        else {
+          q.add(q.poll());
+          index.add(index.poll());
+        }
+      }
+
+    }
+
+    System.out.println(sb);
+  }
+}

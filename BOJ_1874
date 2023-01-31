@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    Stack<Integer> stack = new Stack<>();
+
+    int n = sc.nextInt();
+    int count = 1;
+    
+    for(int i = 1; i <= n; i++) {
+      int num = sc.nextInt();
+
+      while(num >= count) {
+        stack.push(count);
+        sb.append("+").append("\n");
+        count++;
+      }
+
+      if(stack.peek() == num) {
+        stack.pop();
+        sb.append("-").append("\n");
+      }
+        
+      else {
+        sb.setLength(0);    //StringBuidler 초기화
+        sb.append("NO");
+        break;
+      }
+     
+    }
+    
+    System.out.println(sb);
+  }
+}

@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+  
+    int n = sc.nextInt();
+    int[] sum = new int[n+6];
+    int[][] arr = new int[n+6][2];
+
+    for(int i = 1; i <= n; i++) {
+      arr[i][0] = sc.nextInt();     //시간
+      arr[i][1] = sc.nextInt();     //돈
+    }
+
+    for(int i = n; i > 0; i--) {
+      if(i + arr[i][0] <= n + 1) sum[i] = Math.max(sum[i + 1], sum[i + arr[i][0]] + arr[i][1]);
+      else sum[i] = sum[i + 1];
+    }
+
+    System.out.println(sum[1]);
+  }
+}

@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    HashMap<Integer, Integer> map = new HashMap<>();
+    ArrayList<Integer> list = new ArrayList<>();
+  
+    int n = sc.nextInt();
+    int[] arr = new int[n];
+    double sum = 0;
+
+    for(int i = 0; i < n; i++) {
+      int num = sc.nextInt();
+      arr[i] = num;
+      sum += arr[i];
+      if(!map.containsKey(num)) map.put(num, 1);
+      else map.put(num, map.get(num) + 1);
+    }
+
+    int max = Collections.max(map.values());
+
+    for(int key : map.keySet()) if(map.get(key) == max) list.add(key);
+
+    Arrays.sort(arr);
+    Collections.sort(list);
+
+    int freq = 0;
+    
+    if(list.size() > 1) freq = list.get(1);
+    else freq = list.get(0);
+    
+    int avg = (int)Math.round(sum/n);
+    int mid = arr[n / 2];
+    int range = arr[n-1] - arr[0];
+
+    System.out.println(avg+"\n"+mid+"\n"+freq+"\n"+range);
+  }
+}

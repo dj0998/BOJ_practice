@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    int c = sc.nextInt();
+    int d = sc.nextInt();
+
+    int down = b * d / gcd(b, d);
+    int up = (a * (down / b) + c * (down / d));
+
+    int n = gcd(down, up);
+
+    down /= n;
+    up /= n;
+    
+    System.out.println(up+" "+down);
+  }
+
+  static int gcd(int x, int y) {
+    if(y == 0) return x;
+    return gcd(y, x % y);
+  }
+  
+}

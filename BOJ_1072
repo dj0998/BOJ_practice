@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int count = 0;
+    double x = sc.nextInt();
+    double y = sc.nextInt();
+    long z = (long)Math.floor(y * 100 / x);
+
+    if(x == y || z >= 99) sb.append(-1);
+    else {
+      long check = z;
+      while(z <= check) {
+        x++;
+        y++;
+        count++;
+        z = (long)Math.floor(y * 100 / x);
+      }
+      sb.append(count);
+    }
+    
+    System.out.println(sb);
+  }
+}

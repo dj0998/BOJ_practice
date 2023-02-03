@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    StringBuilder list = new StringBuilder();
+
+    int[] alpha = new int[26];
+    String str = sc.next();
+
+    for(int i = 0; i < str.length(); i++) alpha[str.charAt(i) - 'A']++;
+
+    int odd = 0;
+    int index = 0;
+
+    for(int i = 0; i < 26; i++) {
+      if(alpha[i] % 2 == 1) {
+        odd++;
+        index = i;
+      }
+    }
+    
+    if((str.length() % 2 == 1 && odd > 1) || (str.length() % 2 == 0 && odd > 0) || odd >= 2) sb.append("I'm Sorry Hansoo");
+
+    else {
+      
+      for(int i = 0; i < 26; i++) {
+        for(int j = 0; j < alpha[i] / 2; j++) list.append((char)(i + 'A'));
+      }
+
+      String ori = list.toString();
+      String rev = list.reverse().toString();
+
+      if(odd == 1) ori += (char)(index +'A');
+
+      sb.append(ori + rev);
+    }
+    
+    System.out.println(sb);
+  }
+}

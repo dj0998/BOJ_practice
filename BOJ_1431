@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    
+    int n = sc.nextInt();
+    String[] arr = new String[n];
+
+    for(int i = 0; i < n; i++) arr[i] = sc.next();
+
+    Arrays.sort(arr, new Comparator<String>() {
+      public int compare(String s1, String s2) {
+        if(s1.length() == s2.length()) {
+          int sum1 = 0;
+          int sum2 = 0;
+          for(int i = 0; i < s1.length(); i++) {
+            if(s1.charAt(i) >= '0' && s1.charAt(i) <= '9') sum1 += s1.charAt(i) - '0';
+          }
+          for(int i = 0; i < s2.length(); i++) {
+            if(s2.charAt(i) >= '0' && s2.charAt(i) <= '9') sum2 += s2.charAt(i) - '0';
+          }
+          if(sum1 == sum2) return s1.compareTo(s2);
+          else return sum1 - sum2;
+        }
+        else return s1.length() - s2.length();
+      }
+    });
+
+    for(int i = 0; i < n; i++) sb.append(arr[i]+"\n");
+
+    System.out.println(sb);
+  }
+}

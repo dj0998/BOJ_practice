@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int n = sc.nextInt();
+    String p = sc.next();
+    String l = p.substring(0, p.indexOf("*"));
+    String r = p.substring(p.indexOf("*") + 1);
+    
+    for(int i = 0; i < n; i++) {
+      String str = sc.next();
+      
+      if(str.length() < l.length() + r.length()) sb.append("NE").append("\n");
+        
+      else {
+        if(str.substring(0, l.length()).equals(l) && str.substring(str.length() - r.length()).equals(r)) sb.append("DA").append("\n");
+        else sb.append("NE").append("\n");
+      }
+    
+    }
+
+    System.out.println(sb);
+  }
+}

@@ -1,0 +1,20 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    long sum = 0;
+    int n = sc.nextInt();
+    int[] arr = new int[n + 1];
+    
+    for(int i = 1; i <= n; i++) arr[i] = sc.nextInt();
+
+    Arrays.sort(arr);
+
+    for(int i = 1; i <= n; i++) sum += (Math.abs(arr[i] - i));
+
+    System.out.println(sum);
+  }
+}

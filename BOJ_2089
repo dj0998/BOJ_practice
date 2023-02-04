@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int n = sc.nextInt();
+
+    if(n == 0) sb.append(0);
+
+    else {
+      while(n != 0) {
+        if(n % -2 == 0) {
+          sb.append(0);
+          n /= -2;
+        }
+        else {
+          sb.append(1);
+          n = (n - 1) / -2;
+        }
+      }
+    }
+
+    sb.reverse();
+      
+    System.out.println(sb);
+  }
+}

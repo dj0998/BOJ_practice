@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    boolean check[] = new boolean[1001];
+
+    check[1] = true;
+    check[2] = false;
+    check[3] = true;
+    check[4] = true;
+    check[5] = true;
+    
+    for(int i = 6; i <= n; i++) {
+      if(check[i - 1] == false || check[i - 3] == false || check[i - 4] == false) check[i] = true;
+      else check[i] = false;
+    }
+
+    if(check[n] == true) System.out.println("SK");
+    else System.out.println("CY");
+  }
+}

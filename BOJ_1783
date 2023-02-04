@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+
+    if(n == 1) sb.append(1);                                     //세로가 1이면 시작지점만 변경가능
+    else if(n == 2) sb.append(Math.max(((m + 1) / 2), 4));       //이동방법을 모두 사용할수없으므로 최대는 4
+    else if(n > 2) {
+      if(m < 7) sb.append(Math.max(m, 4));                       //이동방법을 모두 사용할수없으므로 최대는 4
+      else if(m >= 7) sb.append(m - 2);                          //n == 7이면 4개의 이동방법을 모두사용가능하므로 n == 7이면 5, 8이면 6...
+    }
+
+    System.out.println(sb);
+  }
+}

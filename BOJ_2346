@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.Deque;
+import java.util.ArrayDeque;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Deque<Integer> deque = new ArrayDeque<>();
+    StringBuilder sb = new StringBuilder();
+    
+    int n = sc.nextInt();
+    int[] arr = new int[n + 1];
+    for(int i = 1; i <= n; i++) arr[i] = sc.nextInt();
+
+    for(int i = 1; i <= n; i++) deque.add(i);
+
+    sb.append(deque.pollFirst()+" ");  //1번풍선
+    int num = arr[1];
+
+    while(!deque.isEmpty()) {
+      
+      if(num > 0) {
+        for(int j = 0; j < num - 1; j++) deque.addLast(deque.pollFirst());
+        num = arr[deque.peek()];
+        sb.append(deque.pollFirst()+" ");
+      }
+
+      else if(num < 0) {
+        for(int j = 0; j < Math.abs(num) - 1; j++) deque.addFirst(deque.pollLast());
+        num = arr[deque.peekLast()];
+        sb.append(deque.pollLast()+" ");
+      }
+      
+    }
+    
+    System.out.println(sb);
+  }
+}

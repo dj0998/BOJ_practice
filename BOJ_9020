@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static int n;
+  static boolean[] arr = new boolean[10001];
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    
+    arr[0] = true;
+    arr[1] = true;
+
+    int t = sc.nextInt();
+   
+    for(int i = 0; i < t; i++) {
+      n = sc.nextInt();
+      int div = n / 2;
+      demical();
+
+      while(true) {
+        if(arr[div] == false && arr[n - div] == false) break;
+        div++;
+      }
+      
+      sb.append((n - div)+" "+div).append("\n");
+    }
+    
+    System.out.println(sb);
+  }
+
+  static void demical() {
+    for(int i = 2; i <= Math.sqrt(n); i++) {
+      if(arr[i] == true) continue;
+      for(int j = i * i; j <= n; j += i) arr[j] = true;
+    }
+  }
+  
+}

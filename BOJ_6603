@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+
+  static int k;
+  static int count;
+  static int[] list;
+  static int[] arr;
+  static boolean[] visit;
+  static StringBuilder sb;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    sb = new StringBuilder();
+
+    while(true) {
+      k = sc.nextInt();
+      if(k == 0) break;
+      list = new int[k];
+      arr = new int[k];
+      visit = new boolean[k];
+      for(int i = 0; i < k; i++) list[i] = sc.nextInt();
+      Arrays.sort(list);
+
+      dfs(0, 0);
+      sb.append("\n");
+    }
+  
+    System.out.println(sb);
+  }
+
+  public static void dfs(int dep, int num) {
+    if(dep == 6) {
+      for(int i = 0; i < 6; i++) sb.append(arr[i]+" ");
+      sb.append("\n");
+      return;
+    }
+
+    for(int i = num; i < k; i++) {
+      if(visit[i] == false) {
+        arr[dep] = list[i];
+        visit[i] = true;
+        dfs(dep + 1, i + 1);
+        visit[i] = false;
+      }
+    }
+
+  }
+}

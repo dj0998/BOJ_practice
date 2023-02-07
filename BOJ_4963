@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static int w;
+  static int h;
+  static int[][] arr;
+  static boolean[][] visit;
+  static int[] lr = {0, 0, -1, 1, -1, -1 , 1, 1};
+  static int[] up = {1, -1, 0, 0, 1, -1 , 1, -1};
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+   
+    while(true) {
+      int count = 0;
+      arr = new int[51][51];
+      visit = new boolean[51][51];
+      w = sc.nextInt();
+      h = sc.nextInt();
+      if(w == 0 && h == 0) break;
+      
+      for(int i = 1; i <= h; i++) {
+        for(int j = 1; j <= w; j++) arr[i][j] = sc.nextInt();
+      }
+
+      for(int i = 1; i <= h; i++) {
+        for(int j = 1; j <= w; j++) {
+          if(arr[i][j] == 1 && visit[i][j] == false) {
+            dfs(i, j);
+            count++;
+          }
+        }
+      }
+      sb.append(count+"\n");
+    }
+    
+    System.out.println(sb);
+  }
+
+  public static void dfs(int a, int b) {
+    visit[a][b] = true;
+    for(int i = 0; i < 8; i++) {
+      int x = a + lr[i];
+      int y = b + up[i];
+      if(x > 0 && y > 0 && x <= h && y <= w && arr[x][y] == 1 && visit[x][y] == false) dfs(x, y);
+    }
+  }
+
+}

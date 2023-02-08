@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    Stack<String> l = new Stack<>();
+    Stack<String> r = new Stack<>();
+    
+    String str = sc.next();
+    int m = sc.nextInt();
+
+    String[] arr = str.split("");
+
+    for(int i = 0; i < arr.length; i++) l.add(arr[i]);
+
+    for(int i = 0; i < m; i++) {
+      String input = sc.next();
+      
+      if(!l.isEmpty() && input.equals("L")) r.push(l.pop());
+      else if(!r.isEmpty() && input.equals("D")) l.push(r.pop());
+      else if(!l.isEmpty() && input.equals("B")) l.pop();
+      else if(input.equals("P")) l.push(sc.next());
+    }
+
+    for(int i = 0; i < l.size(); i++) sb.append(l.get(i));
+    for(int i = r.size() - 1; i >= 0; i--) sb.append(r.get(i));
+
+    System.out.println(sb);
+  }
+}

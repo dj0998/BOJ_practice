@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static int m1 = 0;
+  static int z = 0;
+  static int p1 = 0;
+  static int n;
+  static int col;
+  static int[][] arr;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+   
+    int n = sc.nextInt();
+    arr = new int[n][n];
+
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < n; j++) arr[i][j] = sc.nextInt();
+    }
+
+    div(0, 0, n);
+
+    sb.append(m1 + "\n" + z + "\n" +p1);
+    
+    System.out.println(sb);
+  }
+
+  public static void div(int x, int y, int num) {
+    for(int i = x; i < x + num; i++) {
+      for(int j = y; j < y + num; j++) {
+        col = arr[x][y];
+        if(arr[i][j] != col) {
+          div(x, y, num / 3);
+          div(x + num / 3, y, num / 3);
+          div(x, y + num / 3, num / 3);
+          div(x + num / 3, y + num / 3, num / 3);
+          div(x + num * 2 / 3, y, num / 3);
+          div(x, y + num * 2 / 3, num / 3);
+          div(x + num * 2 / 3, y + num / 3, num / 3);
+          div(x + num / 3, y + num * 2 / 3, num / 3);
+          div(x + num * 2 / 3, y + num * 2 / 3, num / 3);
+          return;
+        }
+      }
+    }
+    
+    if(col == -1) m1++;
+    else if(col == 1) p1++;
+    else z++;
+  }
+}

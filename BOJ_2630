@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static int col;
+  static int n;
+  static int w;
+  static int b;
+  static int[][] arr;
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    
+    n = sc.nextInt();
+    arr = new int[n][n];
+
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < n; j++) arr[i][j] = sc.nextInt();
+    }
+
+    div(0, 0, n);
+
+    sb.append(w+"\n"+b);
+    
+    System.out.println(sb);
+  }
+
+  public static void div(int x, int y, int r) {
+    for(int i = x; i < x + r; i++) {
+      for(int j = y; j < y + r; j++) {
+        col = arr[x][y];
+        if(col != arr[i][j]) {
+          div(x, y, r / 2);
+          div(x + r / 2, y , r / 2);
+          div(x, y + r / 2 , r / 2);
+          div(x + r / 2, y + r / 2 , r / 2);
+          return;
+        }
+      }
+    }
+    
+    if(col == 0) w++;
+    else b++;
+  }
+}

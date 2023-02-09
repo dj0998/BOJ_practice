@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Stack;;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    
+    int t = sc.nextInt();
+
+    for(int i = 0; i < t; i++) {
+      Stack<Character> l = new Stack<>();
+      Stack<Character> r = new Stack<>();
+      String str = sc.next();
+
+      for(int j = 0; j < str.length(); j++) {
+        char input = str.charAt(j);
+        if(input == '>') {
+          if(!r.isEmpty()) l.push(r.pop());
+        }
+          
+        else if(input == '<') {
+          if(!l.isEmpty()) r.push(l.pop());
+        }
+        
+        else if(input == '-') {
+          if(!l.isEmpty()) l.pop();
+        }
+          
+        else l.push(input);
+      }
+      
+      while (!l.isEmpty()) r.push(l.pop());
+
+      while(!r.isEmpty()) sb.append(r.pop());
+      sb.append("\n");
+    }
+    
+    System.out.println(sb);
+  }
+}

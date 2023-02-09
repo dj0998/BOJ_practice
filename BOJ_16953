@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int count = 1;
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+
+    while(a != b) {
+
+      if(a > b) {
+        count = -1;
+        break;
+      }
+      
+      else if(b % 2 == 0) {
+        count++;
+        b /= 2;
+      }
+        
+      else if(b % 10 == 1) {
+        count++;
+        b /= 10;
+      }
+
+      else {
+        count = -1;
+        break;
+      }
+      
+    }
+    
+    System.out.println(count);
+  }
+}

@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+
+    int result5 = cal5(n) - cal5(n - m) - cal5(m);
+    int result2 = cal2(n) - cal2(n - m) - cal2(m);
+    
+    
+    System.out.println(Math.min(result2, result5));
+  }
+
+  public static int cal5(int num) {
+    int count = 0;
+    while(num >= 5) {
+      count += num / 5;
+      num /= 5;
+    }
+    return count;
+  }
+
+  public static int cal2(int num) {
+    int count = 0;
+    while(num >= 2) {
+      count += num / 2;
+      num /= 2;
+    }
+    return count;
+  }
+   
+}

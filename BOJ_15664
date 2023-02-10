@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+
+  static int n;
+  static int m;
+  static int[] arr;
+  static int[] list;
+  static boolean[] visit;
+  static StringBuilder sb;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    sb = new StringBuilder();
+
+    
+    n = sc.nextInt();
+    m = sc.nextInt();
+    arr = new int[n];
+    list = new int[m];
+    visit = new boolean[n];
+    
+    for(int i = 0; i < n; i++) arr[i] = sc.nextInt();
+
+    Arrays.sort(arr);
+
+    dfs(0, 0);
+      
+    
+    System.out.println(sb);
+  }
+
+  public static void dfs(int dep, int start) {
+    int check = 0;
+    if(dep == m) {
+      for(int i = 0; i < m; i++) sb.append(list[i]+" ");
+      sb.append("\n");
+      return;
+    }
+
+    for(int i = start; i < n; i++) {
+      if(visit[i] == false && check != arr[i]) {
+        visit[i] = true;
+        check = arr[i];
+        list[dep] = arr[i];
+        dfs(dep + 1, i + 1);
+        visit[i] = false;
+      }
+    }
+    
+  }
+}

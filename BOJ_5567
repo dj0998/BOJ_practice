@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+  static int count = 0;
+  static int n;
+  static int m;
+  static ArrayList<ArrayList<Integer>> list;
+  static boolean[] visit;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    n = sc.nextInt();
+    m = sc.nextInt();
+    list = new ArrayList<>();
+    visit = new boolean[n + 1];
+
+    for(int i = 0; i <= n; i++) list.add(new ArrayList<>());
+
+    for(int i = 0; i < m; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      list.get(a).add(b);
+      list.get(b).add(a);
+    }
+
+    dfs(0, 1);
+
+    for(int i = 2; i <= n; i++) {
+      if(visit[i] == true) count++;
+    }
+      
+    System.out.println(count);
+  }
+
+  public static void dfs(int dep, int start) {
+    if(dep == 2) return;
+    
+    for(int i : list.get(start)) {
+        visit[i] = true;
+        dfs(dep + 1, i);
+    }
+    
+  }
+}

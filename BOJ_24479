@@ -1,0 +1,55 @@
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.ArrayList;
+
+public class Main {
+
+  static int count = 1;
+  static int n;
+  static int m;
+  static int r;
+  static int[] visit;
+  static ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+  static StringBuilder sb = new StringBuilder();
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    n = sc.nextInt();
+    m = sc.nextInt();
+    r = sc.nextInt();
+    visit = new int[n + 1];
+    
+    for(int i = 0; i <= n; i++) list.add(new ArrayList<>());
+
+    for(int i = 0; i < m; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      list.get(a).add(b);
+      list.get(b).add(a);
+    }
+    for(int i = 1; i < list.size(); i++) {
+      Collections.sort(list.get(i));
+    }
+
+    dfs(r);
+
+    for(int i = 1; i < visit.length; i++) {
+      sb.append(visit[i]+"\n");
+    }
+
+    System.out.print(sb);
+  }
+
+  public static void dfs(int num) {
+    visit[num] = count;
+    for(int i = 0; i < list.get(num).size(); i++) {
+      int tmp = list.get(num).get(i);
+      if(visit[tmp] == 0) {
+        count++;
+        dfs(tmp);
+      }
+    }
+  }
+  
+}

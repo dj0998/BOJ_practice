@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    HashMap<String, Integer> map = new HashMap<>();
+    ArrayList<String> list = new ArrayList<>();
+
+    int count = 0;
+    
+    while(sc.hasNext()) {
+      String str = sc.nextLine();
+      if(!map.containsKey(str)) map.put(str, 1);
+      else map.put(str, map.get(str) + 1);
+      count++;
+    }
+
+    for(String key : map.keySet()) list.add(key);
+
+    Collections.sort(list);
+
+    for(int i = 0; i < list.size(); i++) {
+      int num =  map.get(list.get(i)) * 100;
+      String n = String.format("%.4f", (double)num / (double)count);
+      sb.append(list.get(i)+" "+n).append("\n");
+    }
+
+    System.out.print(sb);
+  }
+}

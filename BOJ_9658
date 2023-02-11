@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    boolean[] arr = new boolean[1001];
+    int n = sc.nextInt();
+
+    arr[1] = false;
+    arr[2] = true;
+    arr[3] = false;
+    arr[4] = true;
+
+    for(int i = 5; i <= n; i++) {
+      if(arr[i - 1] == false || arr[i - 3] == false || arr[i - 4] == false) arr[i] = true;
+      else arr[i] = false;
+    }
+
+    if(arr[n] == true) System.out.print("SK");
+    else System.out.print("CY");
+  }
+}

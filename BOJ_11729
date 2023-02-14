@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static StringBuilder sb = new StringBuilder();
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+
+    sb.append((int)Math.pow(2, n) - 1).append("\n");
+
+    cal(n, 1, 2, 3);
+ 
+    System.out.println(sb);
+  }
+
+  public static void cal(int num, int fir, int sec, int thr) {
+    if(num == 1) {
+      sb.append(fir+" "+thr).append("\n");
+      return;
+    }
+    cal(num - 1, fir, thr, sec);
+    sb.append(fir+" "+thr).append("\n");
+    cal(num - 1, sec, fir, thr);
+  }
+}

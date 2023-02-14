@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+
+  static int[] arr = new int[100001];
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    int k = sc.nextInt();
+
+    bfs(n, k);
+    
+    System.out.println(arr[k] - 1);
+  }
+
+  public static void bfs(int a, int b) {
+    Queue<Integer> q = new LinkedList<>();
+    arr[a] = 1;
+    q.add(a);
+
+    while(!q.isEmpty()) {
+      int num = q.poll();
+      if(num == b) break;
+
+      if(num - 1 >= 0 && arr[num - 1] == 0) {
+        q.add(num - 1);
+        arr[num - 1] = arr[num] + 1;
+      }
+
+      if(num + 1 <= 100000 && arr[num + 1] == 0) {
+        q.add(num + 1);
+        arr[num + 1] =  arr[num] + 1;
+      }
+
+      if(num * 2 <= 100000 && arr[num * 2] == 0) {
+        q.add(num * 2);
+        arr[num * 2] =  arr[num] + 1;
+      }
+    }
+  }
+  
+}

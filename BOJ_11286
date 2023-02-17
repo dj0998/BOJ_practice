@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.PriorityQueue;
+import java.util.Comparator;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    PriorityQueue<Integer> q = new PriorityQueue<>(new Comparator<Integer>() {
+      public int compare(Integer o1, Integer o2) {
+        int a = Math.abs(o1);
+        int b = Math.abs(o2);
+        
+        if(a == b) return o1 - o2;
+        else return a - b;
+      }
+    }); 
+    
+    int n = sc.nextInt();
+    
+
+    for(int i = 0; i < n; i++) {
+      int num = sc.nextInt();
+      if(num == 0) {
+        if(q.isEmpty()) sb.append(0+"\n");
+        else sb.append(q.poll()+"\n");
+      }
+      else q.add(num);
+    }
+    
+    System.out.println(sb);
+  }
+}

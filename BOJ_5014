@@ -1,0 +1,54 @@
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+
+  static int f;
+  static int u;
+  static int d;
+  static StringBuilder sb = new StringBuilder();
+  static Queue<Integer> q;
+  static int[] visit;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    f = sc.nextInt();
+    int s = sc.nextInt();
+    int g = sc.nextInt();
+    u = sc.nextInt();
+    d = sc.nextInt();
+    visit = new int[f + 1];
+
+    bfs(s, g);
+
+    System.out.println(sb);
+  }
+
+  public static void bfs(int s, int g) {
+    q = new LinkedList<>();
+    visit[s] = 1;
+    q.add(s);
+
+    while(!q.isEmpty()) {
+      int num = q.poll();
+      if(num == g) {
+        sb.append(visit[num] - 1);
+        return;
+      }
+      int up = num + u;
+      int down = num - d;
+      if(up >= 1 && up <= f && visit[up] == 0) {
+        q.add(up);
+        visit[up] = visit[num] + 1;
+      }
+      
+      if(down >= 1 && down <= f && visit[down] == 0) {
+        q.add(down);
+        visit[down] = visit[num] + 1;
+      }
+    }
+    if(visit[g] == 0) sb.append("use the stairs");
+  }
+}

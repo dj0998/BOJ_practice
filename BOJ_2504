@@ -1,0 +1,47 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Stack<Character> stack = new Stack<>();
+
+    int sum = 0;
+    int tmp = 1;
+    String str = sc.nextLine();
+   
+    for(int i = 0; i < str.length(); i++) {
+      char c = str.charAt(i);
+      if(c == '(') {
+        stack.push(c);
+        tmp *= 2;
+      }
+      else if(c == '[') {
+        stack.push(c);
+        tmp *= 3;
+      }
+      
+      else if(c == ')') {
+        if(stack.isEmpty() || stack.peek() != '(') break;
+        else if(str.charAt(i - 1) == '(') {
+          sum += tmp;
+        }
+        stack.pop();
+        tmp /= 2;
+      }
+      
+      else if(c == ']') {
+        if(stack.isEmpty() || stack.peek() != '[') break;
+        else if(str.charAt(i - 1) == '[') {
+          sum += tmp;
+        }
+        stack.pop();
+        tmp /= 3;
+      }
+      
+    }
+
+    if(!stack.isEmpty()) System.out.println(0);
+    else System.out.println(sum);
+  }
+}

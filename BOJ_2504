@@ -22,19 +22,21 @@ public class Main {
       }
       
       else if(c == ')') {
-        if(stack.isEmpty() || stack.peek() != '(') break;
-        else if(str.charAt(i - 1) == '(') {
-          sum += tmp;
+        if(stack.isEmpty() || stack.peek() != '(') {
+          sum = 0;
+          break;
         }
+        else if(str.charAt(i - 1) == '(') sum += tmp;
         stack.pop();
         tmp /= 2;
       }
       
       else if(c == ']') {
-        if(stack.isEmpty() || stack.peek() != '[') break;
-        else if(str.charAt(i - 1) == '[') {
-          sum += tmp;
+        if(stack.isEmpty() || stack.peek() != '[') {
+          sum = 0;
+          break;
         }
+        else if(str.charAt(i - 1) == '[') sum += tmp;
         stack.pop();
         tmp /= 3;
       }

@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+  static int n;
+  static int m;
+  static int[] arr;
+  static boolean[] visit;
+  static ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int max = -1;
+    n = sc.nextInt();
+    m = sc.nextInt();
+    arr = new int[n + 1];
+    for(int i = 0; i <= n; i++) list.add(new ArrayList<>());
+    
+    for(int i = 0; i < m; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      list.get(a).add(b);
+    }
+
+    for(int i = 1; i <= n; i++) {
+      visit = new boolean[n + 1];
+      dfs(i);
+    }
+
+    for(int i = 1; i <= n; i++) max = Math.max(max, arr[i]);
+
+    for(int i = 1; i <= n; i++) {
+      if(arr[i] == max) sb.append(i+" ");
+    }
+
+    System.out.println(sb);
+  }
+
+  public static void dfs(int num) {
+    visit[num] = true;
+    for(int i : list.get(num)) {
+      if(visit[i] == false) {
+        arr[i]++;
+        dfs(i);
+      }
+    }
+  }
+  
+}

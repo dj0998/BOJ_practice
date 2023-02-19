@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    String str = sc.nextLine();
+    String[] arr = str.split(":");
+
+    int a = Integer.parseInt(arr[0]);
+    int b = Integer.parseInt(arr[1]);
+
+    int n = gcd(a, b);
+    
+    System.out.println(a / n +":"+ b / n);
+  }
+
+  public static int gcd(int a, int b) {
+    if(b == 0) return a;
+    else return gcd(b, a % b);
+  }
+  
+}

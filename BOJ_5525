@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int check = 0;
+    int count = 0;
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    char[] arr = sc.next().toCharArray();
+
+
+    for(int i = 1; i < m - 1; i++) {
+      if(arr[i - 1] == 'I' && arr[i] == 'O' && arr[i + 1] == 'I') {
+        check++;
+        if(check == n) {
+          count++;
+          check--;
+        }
+        i++;
+      }
+      else check = 0;
+    }
+    
+    System.out.println(count);
+  }
+}

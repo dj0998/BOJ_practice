@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static int max = -1;
+  static int count;
+  static int n;
+  static int m;
+  static int[] dx = {1, -1, 0, 0};
+  static int[] dy = { 0, 0, -1, 1};
+  static boolean[][] visit;
+  static int[][] arr;
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+  
+    n = sc.nextInt();
+    m = sc.nextInt();
+    int k = sc.nextInt();
+
+    arr = new int[n][m];
+    visit = new boolean[n][m];
+
+    for(int i = 0; i < k; i++) {
+      int a = sc.nextInt();
+      int b = sc.nextInt();
+      arr[a - 1][b - 1] = 1;
+    }
+
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < m; j++) {
+        if(arr[i][j] != 0 && visit[i][j] == false) {
+          count = 0;
+          dfs(i, j);
+          max = Math.max(max, count);
+        }
+      }
+    }
+
+    System.out.println(max);
+  }
+
+  public static void dfs(int a, int b) {
+    count++;
+    visit[a][b] = true;
+    for(int i = 0; i < 4; i++) {
+      int x = a + dx[i];
+      int y = b + dy[i];
+      if(x >= 0 && x < n && y >= 0 && y < m && arr[x][y] != 0 && visit[x][y] == false) dfs(x, y);
+    }
+  }
+  
+}

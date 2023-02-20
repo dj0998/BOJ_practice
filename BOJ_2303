@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int result = 0;
+    int index = 0;
+    int t = sc.nextInt();
+    int[] check = new int[t];
+    int[] arr = new int[5];
+    
+    for(int x = 0; x < t; x++) {
+      int max = -1;
+      for(int i = 0; i < 5; i++) arr[i] = sc.nextInt();
+
+      for(int i = 0; i < 3; i++) {
+        for(int j = i + 1; j < 4; j++) {
+          for(int k = j + 1; k < 5; k++) {
+            max = Math.max(max, (arr[i] + arr[j] + arr[k]) % 10);
+          }
+        }
+      }
+      check[x] = max;
+    }
+
+    for(int i = 0; i < t; i++) {
+      if(result <= check[i]) {
+        index = i + 1;
+        result = check[i];
+      }
+    }
+
+    System.out.println(index);
+  }
+}

@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    while(true) {
+      String str = sc.next();
+      if(str.equals("end")) break;
+      if(check(str)) sb.append("<").append(str).append("> is acceptable.").append("\n");
+      else sb.append("<").append(str).append("> is not acceptable.").append("\n");
+    }
+
+    System.out.println(sb);
+  }
+
+  public static boolean check(String str) {
+    int co = 0;
+    int v = 0;
+    boolean vow = false;
+    char[] c = str.toCharArray();
+    for(int i = 0; i < c.length; i++) {
+      if(c[i] == 'a' || c[i] == 'e' || c[i] == 'i' || c[i] == 'o' || c[i] == 'u') {
+        vow = true;
+        co = 0;
+        v++;
+        if(v == 3) return false;
+      }
+      else {
+        v = 0;
+        co++;
+        if(co == 3) return false;
+      }
+      if(i > 0) {
+        if(c[i - 1] != 'e' && c[i - 1] != 'o') {
+          if(c[i - 1] == c[i]) return false;
+        }
+      }
+    }
+    if(vow == false) return false;
+    
+    return true;
+  }
+}

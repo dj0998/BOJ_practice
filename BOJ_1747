@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    boolean[] arr = new boolean[10000001];
+    arr[0] = true;
+    arr[1] = true;
+    int n = sc.nextInt();
+    
+    for(int i = 2; i * i <= 10000000; i++) {
+      for(int j = i * i; j <= 10000000; j+=i) arr[j] = true;
+    }
+
+    for(int i = n; i <= 10000000; i++) {
+      if(arr[i] == false) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(i);
+        if(sb.toString().equals(sb.reverse().toString())) {
+          System.out.print(sb);
+          break;
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class Main {
+  
+  static int wolf;
+  static int sheep;
+  static int w = 0;
+  static int s = 0;
+  static int r;
+  static int c;
+  static int[] dx = {1, -1, 0, 0};
+  static int[] dy = {0, 0, -1, 1};
+  static char[][] arr;
+  static boolean[][] visit;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    r = sc.nextInt();
+    c = sc.nextInt();
+    arr = new char[r][c];
+    visit = new boolean[r][c];
+ 
+    for(int i = 0; i < r; i++) {
+      String str = sc.next();
+      for(int j = 0; j < c; j++) arr[i][j] = str.charAt(j);
+    }
+
+    for(int i = 0; i < r; i++) {
+      for(int j = 0; j < c; j++) {
+        if(visit[i][j] == false && arr[i][j] != '#' && (arr[i][j] == 'v' || arr[i][j] == 'o')) {
+          wolf = 0;
+          sheep = 0;
+          dfs(i, j);
+          if(wolf < sheep) s += sheep;
+          else w += wolf;
+        }
+      }
+    }
+    sb.append(s+" "+w);
+    
+    System.out.println(sb);
+  }
+
+  public static void dfs(int a, int b) {
+    visit[a][b] = true;
+    if(arr[a][b] == 'v') wolf++;
+    else if(arr[a][b] == 'o') sheep++;
+
+    for(int i = 0; i < 4; i++) {
+      int x = a + dx[i];
+      int y = b + dy[i];
+
+      if(x >= 0 && x < r && y >= 0 && y < c && arr[x][y] != '#' && visit[x][y] == false) dfs(x, y);
+    }
+  }
+}

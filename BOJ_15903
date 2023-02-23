@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.util.PriorityQueue;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    PriorityQueue<Long> q = new PriorityQueue<>();
+
+    long sum = 0;
+    long n = sc.nextInt();
+    long m = sc.nextInt();
+   
+    for(int i = 0; i < n; i++) q.add(sc.nextLong());
+
+    for(int i = 0; i < m; i++) {
+      long a = q.poll();
+      long b = q.poll();
+      q.add(a + b);
+      q.add(a + b);
+    }
+
+    while(!q.isEmpty()) sum += q.poll();
+    
+    System.out.println(sum);
+  }
+}

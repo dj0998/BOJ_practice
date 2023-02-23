@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int count = 0;
+    int n = sc.nextInt();
+    char d = sc.next().charAt(0);
+    String str = "";
+
+    for(int i = 1; i <= n; i++) {
+      str = String.valueOf(i);
+      for(int j = 0; j < str.length(); j++) {
+        if(str.charAt(j) == d) count++;
+      }
+    }
+    
+    System.out.println(count);
+  }
+}

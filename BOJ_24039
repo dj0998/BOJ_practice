@@ -1,0 +1,35 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    ArrayList<Integer> list = new ArrayList<>();
+
+    boolean[] arr = new boolean[10001];
+    int n = sc.nextInt();
+
+    arr[0] = true;
+    arr[1] = true;
+
+    for(int i = 2; i * i <= 10000; i++) {
+      if(arr[i] == true) continue;
+      for(int j = i * i; j <= 10000; j += i) arr[j] = true;
+    }
+
+    for(int i = 2; i <= 10000; i++) {
+      if(arr[i] == false) list.add(i);
+    }
+
+    for(int i = 1; i < list.size(); i++) {
+      int num = list.get(i - 1) * list.get(i);
+      if(num > n) {
+        sb.append(num);
+        break;
+      }
+    }
+         
+    System.out.println(sb);
+  }
+}

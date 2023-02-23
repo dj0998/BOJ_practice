@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Queue<Integer> t = new LinkedList<>();
+    Queue<Integer> q = new LinkedList<>();
+
+    int time = 0;
+    int weight = 0;
+    int n = sc.nextInt();
+    int w = sc.nextInt();
+    int l = sc.nextInt();
+    for(int i = 0; i < n; i++) t.add(sc.nextInt());
+    for(int i = 0; i < w; i++) q.add(0);
+
+    while(!q.isEmpty()) {
+      weight -= q.poll();
+      time++;
+      if(!t.isEmpty()) {
+        if(t.peek() + weight <= l) {
+          weight += t.peek();
+          q.add(t.poll());
+        }
+        else q.add(0);
+      }
+    }
+
+    System.out.println(time);
+  }
+}

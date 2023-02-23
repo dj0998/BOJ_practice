@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int gap = Integer.MAX_VALUE;
+    int count = 0;
+    int a = sc.nextInt();
+    int b = sc.nextInt();
+    int n = sc.nextInt();
+    int num = Math.abs(b - a);
+    int arr[] = new int[n];
+    
+
+    for(int i = 0; i < n; i++) {
+      arr[i] = sc.nextInt();
+      gap = Math.min(gap, Math.abs(b - arr[i]));
+    }
+
+   if(num <= gap) count = num;
+   else count = gap + 1;
+    
+    System.out.println(count);
+  }
+}

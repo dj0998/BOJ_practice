@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int t = sc.nextInt();
+    
+    for(int i = 0; i < t; i++) {
+      int x = sc.nextInt();
+      int y = sc.nextInt();
+      int gap = y - x;
+      int max = (int)Math.sqrt(gap);
+
+      if(gap == Math.pow(max, 2)) sb.append(2 * max - 1).append("\n");
+      else if(gap <= Math.pow(max, 2) + max) sb.append(2 * max).append("\n");
+      else if(gap > Math.pow(max, 2) + max) sb.append(2 * max + 1).append("\n");
+    }
+
+    System.out.println(sb);
+  }
+}

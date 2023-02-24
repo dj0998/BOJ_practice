@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    Queue<Integer> q = new LinkedList<>();
+    StringBuilder sb = new StringBuilder();
+    
+    int[] arr = {3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1};
+
+    String a = sc.nextLine();
+    String b = sc.nextLine();
+    String[] A = a.split("");
+    String[] B = b.split("");
+    
+    String str = "";
+
+    for(int i = 0; i < a.length(); i++) {
+      str += A[i];
+      str += B[i];
+    }
+
+    for(int i = 0; i < str.length(); i++) q.add(arr[str.charAt(i) - 'A']);
+
+    int num = str.length() - 1;
+    while(q.size() > 2) {
+      for(int i = 0; i < num; i++) {
+        int x = q.peek();
+        q.poll();
+        int y = q.peek();
+        q.add((x + y) % 10);
+      }
+      q.poll();
+      num--;
+    }
+
+    String s1 = String.valueOf(q.poll());
+    String s2 = String.valueOf(q.poll());
+  
+    sb.append(s1+s2);
+
+    System.out.println(sb);
+  }
+}

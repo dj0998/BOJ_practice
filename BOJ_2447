@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+
+  static String[][] arr;
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+
+    int n = sc.nextInt();
+    arr = new String[n][n];
+    
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) arr[i][j] = " ";
+    }
+
+    div(0, 0, n);
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) sb.append(arr[i][j]);
+      sb.append("\n");
+    }
+
+    System.out.println(sb);
+  }
+
+  public static void div(int x, int y, int n) {
+    if(n == 1) {
+      arr[x][y] = "*";
+      return;
+    }
+
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        if(i != 1 || j != 1) div(x + i * n / 3, y + j * n / 3, n / 3);
+      }
+    }
+  }
+  
+}

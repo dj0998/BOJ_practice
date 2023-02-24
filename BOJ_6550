@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    while(sc.hasNext()) {
+      Queue<Character> q = new LinkedList<>();
+      String s = sc.next();
+      String t = sc.next();
+      for(int i = 0; i < s.length(); i ++) q.add(s.charAt(i));
+
+      for(int i = 0; i < t.length(); i ++) {
+        if(t.charAt(i) == q.peek()) {
+          q.poll();
+          if(q.isEmpty()) {
+            System.out.println("Yes");
+            break;
+          }
+        }
+      }
+      if(!q.isEmpty()) System.out.println("No");
+    }
+   
+  }
+}

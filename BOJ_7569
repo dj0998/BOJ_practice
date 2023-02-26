@@ -1,0 +1,68 @@
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main {
+
+  static int m, n, h;
+  static int[] dx = {1, -1, 0, 0, 0 ,0};
+  static int[] dy = {0, 0, -1, 1, 0, 0};
+  static int[] dz = {0, 0, 0, 0, 1, -1};
+  static int[][][] arr;
+  static Queue<int[]> q = new LinkedList<>();
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    m = sc.nextInt();
+    n = sc.nextInt();
+    h = sc.nextInt();
+
+    arr = new int[h][n][m];
+    
+    for(int i = 0; i < h; i++) {
+      for(int j = 0; j < n; j++) {
+        for(int k = 0; k < m; k++) {
+          arr[i][j][k] = sc.nextInt();
+          if(arr[i][j][k] == 1) q.add(new int[] {i, j, k});
+        }
+      }
+    }
+
+    int result = bfs();
+
+    System.out.println(result);
+  }
+
+  public static int bfs() {
+    while(!q.isEmpty()) {
+      int[] num = q.poll();
+      int c = num[0];
+      int a = num[1];
+      int b = num[2];
+
+      for(int i = 0; i < 6; i++) {
+        int x = a + dx[i];
+        int y = b + dy[i];
+        int z = c + dz[i];
+        
+        if(x >= 0 && y >= 0 && z >= 0 && x < n && y < m && z < h && arr[z][x][y] == 0) {
+          arr[z][x][y] = arr[c][a][b] + 1;
+          q.add(new int[] {z, x, y});
+        }
+      }
+    }
+
+    int max = -1;
+
+    for(int i = 0; i < h; i++) {
+      for(int j = 0; j < n; j++) {
+        for(int k = 0; k < m; k++) {
+          if(arr[i][j][k] == 0) return -1;
+          max = Math.max(max, arr[i][j][k]);
+        }
+      }
+    }
+    return max - 1;
+  }
+}

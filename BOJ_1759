@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+
+  static int l;
+  static int c;
+  static String[] list;
+  static String[] arr;
+  static boolean[] visit;
+  static StringBuilder sb = new StringBuilder();
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    l = sc.nextInt();
+    c = sc.nextInt();
+    list = new String[c];
+    arr = new String[c];
+    visit = new boolean[c];
+    for(int i = 0; i < c; i++) list[i] = sc.next();
+    Arrays.sort(list);
+
+    dfs(0, 0);
+    
+    System.out.println(sb);
+  }
+
+  public static void dfs(int dep, int start) {
+    if(dep == l) {
+      if(check() == true) {
+        for(int i = 0; i < l; i++) sb.append(arr[i]);
+        sb.append("\n");
+        return;
+      }
+    }
+
+    for(int i = start; i < c; i++) {
+      if(visit[i] == false) {
+        visit[i] = true;
+        arr[dep] = list[i];
+        dfs(dep + 1, i);
+        visit[i] = false;
+      }
+    }
+  }
+
+  public static boolean check() {
+    int a = 0;
+    int b = 0;
+    for(int i = 0; i < l; i++) {
+      if(arr[i].equals("a") || arr[i].equals("e") || arr[i].equals("i") || arr[i].equals("o") || arr[i].equals("u")) a++;
+      else b++;
+    }
+    if(a >= 1 && b >= 2) return true;
+    else return false;
+  }
+}

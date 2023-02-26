@@ -1,0 +1,63 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+  static int n;
+  static int m;
+  static int min = Integer.MAX_VALUE;
+  static int[][] arr;
+  static boolean[] visit;
+  static ArrayList<int[]> home = new ArrayList<>();
+  static ArrayList<int[]> chick = new ArrayList<>();
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    n = sc.nextInt();
+    m = sc.nextInt();
+    arr = new int[n][n];
+    
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < n; j++) {
+        arr[i][j] = sc.nextInt();
+        if(arr[i][j] == 1) home.add(new int[] {i, j});
+        else if(arr[i][j] == 2) chick.add(new int[] {i, j});
+      }
+    }
+
+    visit = new boolean[chick.size()];
+    dfs(0, 0);
+    
+    System.out.println(min);
+  }
+
+  public static void dfs(int dep, int start) {
+    if(dep == m) {
+      int result = 0;
+      for(int i = 0; i < home.size(); i++) {
+        int sum = Integer.MAX_VALUE;
+        for(int j = 0; j < chick.size(); j++) {
+          int[] hn = home.get(i);
+          int[] cn = chick.get(j);
+          if(visit[j] == true) {
+            int gap = Math.abs(hn[0] - cn[0]) + Math.abs(hn[1] - cn[1]);
+            sum = Math.min(sum, gap);
+          }
+        }
+        result += sum;
+      }
+      min = Math.min(result, min);
+      return;
+    }
+
+    for(int i = start; i < chick.size(); i++) {
+      if(visit[i] == false) {
+        visit[i] = true;
+        dfs(dep + 1, i + 1);
+        visit[i] = false;
+      }
+    }
+  }
+  
+}

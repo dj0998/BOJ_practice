@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    StringBuilder sb = new StringBuilder();
+    
+
+    int t = sc.nextInt();
+    for(int i = 0; i < t; i++) {
+      Deque<String> q = new LinkedList<>();
+      boolean err = false;
+      boolean rev = false;
+      char[] c = sc.next().toCharArray();
+      int n = sc.nextInt();
+      String str = sc.next();
+      str = str.substring(1, str.length() - 1);
+      String[] s = str.split(",");
+      for(int j = 0; j < n; j++) q.add(s[j]);
+
+      for(int j = 0; j < c.length; j++) {
+        if(c[j] == 'R') rev = !rev;
+        else {
+          if(!q.isEmpty()) {
+            if(rev == false) q.pollFirst();
+            else q.pollLast();
+          }
+          else err = true;
+        }
+      }
+
+      if(err == true) sb.append("error").append("\n");
+      else {
+        sb.append("[");
+        if(rev == false) {
+          while(q.size() > 1) sb.append(q.pollFirst()).append(",");
+        }
+        else {
+          while(q.size() > 1) sb.append(q.pollLast()).append(",");
+        }
+        if(q.size() == 0) sb.append("]").append("\n");
+        else sb.append(q.poll()).append("]").append("\n");
+      }
+    }
+
+    System.out.println(sb);
+  }
+}

@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Main {
+  
+  static int n, m;
+  static int[][] arr;
+  static int count = 1;
+  static int[] dx = {-1, 0, 1, 0};
+  static int[] dy = {0, 1, 0, -1};
+  
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    n = sc.nextInt();
+    m = sc.nextInt();
+    int r = sc.nextInt();
+    int c = sc.nextInt();
+    int d = sc.nextInt();
+    arr = new int[n][m];
+
+    for(int i = 0; i < n; i++) {
+      for(int j = 0; j < m; j++) arr[i][j] = sc.nextInt();
+    }
+
+    dfs(r, c, d);
+
+    System.out.println(count);
+  }
+
+  public static void dfs(int a, int b, int d) {
+    arr[a][b] = -1;
+    
+    for(int i = 0; i < 4; i++) {
+      d--;
+      if(d == -1) d = 3;
+      int x = a + dx[d];
+      int y = b + dy[d];
+      if(x >= 0 && y >= 0 && x < n && y < m && arr[x][y] == 0) {
+        count++;
+        dfs(x, y, d);
+        return;
+      }
+    }
+
+    int back = (d + 2) % 4; 
+    int bx = a + dx[back];
+    int by = b + dy[back];
+    if(bx >= 0 && by >= 0 && bx < n && by < m && arr[bx][by] != 1) dfs(bx, by, d);
+  }
+}

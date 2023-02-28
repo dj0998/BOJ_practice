@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    boolean[] check = new boolean[10];
+
+    for(int i = 0; i < m; i++) {
+      int c = sc.nextInt();
+      check[c] = true;
+    }
+
+    int min = Math.abs(n - 100);
+    for(int i = 0; i <= 999999; i++) {
+      String str = String.valueOf(i);
+      boolean brk = false;
+      for(int j = 0; j < str.length(); j++) {
+        if(check[str.charAt(j) - '0'] == true) {
+          brk = true;
+          break;
+        }
+      }
+      if(brk == false) min = Math.min(min, Math.abs(n - i) + str.length());
+    }
+    
+    System.out.println(min);
+  }
+}
